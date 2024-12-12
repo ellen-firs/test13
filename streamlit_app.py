@@ -1,25 +1,15 @@
-import streamlit as st
+import matplotlib.pyplot as plt
 
 # Данные для Customer Journey Map
-steps = [
-    {"step": "Регистрация", "description": "Пользователь создает учетную запись, вводит базовые данные.", "duration": "2-3 мин"},
-    {"step": "Настройка профиля", "description": "Добавление информации о компании или личных данных.", "duration": "3-5 мин"},
-    {"step": "Поиск сотрудников", "description": "Фильтрация и просмотр доступных специалистов по параметрам.", "duration": "5-10 мин"},
-    {"step": "Просмотр деталей", "description": "Оценка резюме, просмотр рекомендаций и рейтингов.", "duration": "2-3 мин"},
-    {"step": "Создание заявки", "description": "Оформление заявки на выбранного сотрудника.", "duration": "2 мин"},
-    {"step": "Завершение найма", "description": "Заключение договора и обратная связь.", "duration": "1-2 мин"}
-]
+steps = ["Регистрация", "Настройка профиля", "Поиск сотрудников", "Просмотр деталей", "Создание заявки", "Завершение найма"]
+durations = [3, 5, 8, 4, 3, 2]  # Длительность в минутах
 
-# Заголовок страницы
-st.title("Customer Journey Map для платформы AgroHunters")
-
-# Визуализация шагов
-st.subheader("Шаги пользовательского пути:")
-for step in steps:
-    st.markdown(f"**{step['step']}**")
-    st.write(f"Описание: {step['description']}")
-    st.write(f"Продолжительность: {step['duration']}")
-    st.divider()
-
-# Дополнительная визуализация (если данные доступны)
-st.bar_chart([2, 3, 5, 3, 2, 1], labels=["Регистрация", "Настройка", "Поиск", "Просмотр", "Создание заявки", "Завершение"])
+# Создание диаграммы
+plt.figure(figsize=(10, 6))
+plt.plot(steps, durations, marker='o', color='blue', label='Продолжительность (мин)')
+plt.title("Customer Journey Map")
+plt.xlabel("Этапы пользовательского пути")
+plt.ylabel("Продолжительность (минуты)")
+plt.grid(True)
+plt.legend()
+plt.show()
